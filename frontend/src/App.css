@@ -1,0 +1,35 @@
+# AI Assistant Instructions: Cloud Engineer Technical Assessment
+
+## Project Context
+You are assisting with a 24-hour Associate Cloud Engineer Technical Examination. [cite_start]The primary focus of this project is infrastructure, security, containerization, and deployment—not complex business logic[cite: 63, 65].
+
+The stack consists of:
+- [cite_start]**Backend:** Django REST Framework (Python) [cite: 68]
+- [cite_start]**Frontend:** React via Vite [cite: 68]
+- [cite_start]**Database:** PostgreSQL [cite: 69]
+- [cite_start]**Web Server / Proxy:** Nginx [cite: 94]
+- [cite_start]**Infrastructure:** Docker, Docker Compose, AWS EC2 (Free Tier), AWS S3 [cite: 85, 87-91]
+
+## 🚫 Strict File Generation Rules
+1. **NO ADDITIONAL MARKDOWN FILES:** You are strictly forbidden from creating, suggesting, or generating any new `.md` files (e.g., `NOTES.md`, `ARCHITECTURE.md`, `TODO.md`). 
+2. [cite_start]The only permitted Markdown files in this entire repository are the main `README.md` (which will contain all architectural documentation [cite: 110-115]) and this `copilot-instructions.md` file. 
+3. Keep the file tree as flat and clean as possible. Do not generate unnecessary boilerplate or config files unless explicitly requested.
+
+## 🔒 Security & Best Practices (CRITICAL)
+[cite_start]This assessment heavily grades production readiness and security[cite: 97]. You must enforce the following rules in all generated code and configurations:
+
+1. [cite_start]**Zero Hardcoded Secrets:** Never hardcode passwords, AWS keys, Django secret keys, or database credentials[cite: 86, 103]. [cite_start]Always use `os.environ.get()` or `import.meta.env` and rely on a `.env` file[cite: 99].
+2. [cite_start]**Internal Networking Only:** The PostgreSQL database must NEVER expose its ports to the host machine or the public internet[cite: 96]. It must only communicate with the Django backend via Docker's internal network.
+3. [cite_start]**Least Privilege:** When generating AWS IAM policies or assumed roles, always default to the absolute minimum permissions required (e.g., `s3:PutObject` for a specific bucket arn)[cite: 92, 102].
+4. [cite_start]**Security Groups:** EC2 configuration must only expose ports 80 (HTTP) and 443 (HTTPS) to the public (`0.0.0.0/0`)[cite: 96, 101]. SSH (port 22) must be strictly limited to a specific IP.
+5. [cite_start]**CORS Configuration:** Ensure Django CORS headers are configured correctly [cite: 104][cite_start], allowing only the React frontend's origin in production settings[cite: 100].
+
+## 🐳 Containerization Standards
+1. Dockerfiles must be optimized for size and security (e.g., using lightweight base images like `python:3.10-slim` or `node:18-alpine`).
+2. Do not run containers as the `root` user where avoidable.
+3. [cite_start]The `docker-compose.yml` must clearly define distinct services: `backend`, `frontend`, `postgres`, and `nginx`[cite: 85].
+
+## Coding Style
+- Keep business logic minimal. [cite_start]We only need a simple CRUD entity (e.g., "Tasks") with file upload capabilities [cite: 70-76, 91].
+- Favor functional React components with hooks.
+- Write clean, self-documenting code. Do not over-comment unless explaining a specific infrastructure or security decision.
