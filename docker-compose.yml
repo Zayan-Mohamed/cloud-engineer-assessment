@@ -1,7 +1,4 @@
-version: "3.8"
-
 services:
-  # NOTE: No local 'db' service — the app connects to Amazon RDS via DB_HOST in .env
 
   backend:
     build: ./backend
