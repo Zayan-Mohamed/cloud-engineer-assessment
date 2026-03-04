@@ -2,8 +2,9 @@
 
 A production-ready, containerised full-stack web application demonstrating core cloud engineering competencies: infrastructure design, Docker orchestration, AWS service integration, and secure environment configuration.
 
-> 📹 **Demo Video:** https://youtu.be/7166htiUrk4  
-> 📦 **Repository:** https://github.com/Zayan-Mohamed/cloud-engineer-assessment.git
+> **Demo Video:** https://youtu.be/7166htiUrk4  
+> **Repository:** https://github.com/Zayan-Mohamed/cloud-engineer-assessment.git  
+> **EC2 Public IP:** http://16.16.214.245/  
 
 ---
 
